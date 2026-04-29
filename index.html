@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dr. Srikanth Gadiyaram | Surgical Gastroenterologist &amp; Advanced Laparoscopic Surgeon | Bangalore</title>
@@ -8,293 +8,836 @@
 <meta content="Gastroenterologist Jayanagar, Surgical Gastroenterologist Bangalore, Dr Srikanth Gadiyaram, Sahasra Hospitals, Laparoscopic surgeon, Bariatric surgeon" name="keywords"/>
 <meta content="Dr. Srikanth Gadiyaram" name="author"/>
 <meta content="index, follow" name="robots"/>
-<!-- Fonts & Material Symbols -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Inter:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1E3A8A', // Deep Blue
-            accent: '#0D9488',  // Teal
-            warm: '#F59E0B',    // Amber accent
-            'surface-light': '#F8FAFC',
-          },
-          fontFamily: {
-            serif: ['Newsreader', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          }
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#1E3A8A',
+          accent: '#0D9488',
+          warm: '#F59E0B',
+          'surface-light': '#F8FAFC',
+        },
+        fontFamily: {
+          serif: ['Newsreader', 'serif'],
+          sans: ['Inter', 'sans-serif'],
         }
       }
     }
-  </script>
-<style>
-    .glass-nav { @apply bg-slate-50/80 backdrop-blur-md; }
-    .hero-gradient { background: linear-gradient(135deg, #1E3A8A 0%, #1e40af 50%, #0D9488 100%); }
-    .section-title { @apply font-serif text-4xl md:text-5xl text-blue-900 mb-6 tracking-tight; }
-    .card-hover { @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl; }
-  </style>
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Physician",
-    "name": "Dr. Srikanth Gadiyaram",
-    "description": "Senior Surgical Gastroenterologist & Advanced Laparoscopic Surgeon",
-    "telephone": "+91-9880105829",
-    "medicalSpecialty": "Gastroenterology",
-    "worksFor": {
-      "@type": "Hospital",
-      "name": "Sahasra Hospitals"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Jayanagar",
-      "addressRegion": "Bangalore",
-      "addressCountry": "IN"
-    }
   }
-  </script>
+</script>
+<style>
+  .glass-nav { background: rgba(248,250,252,0.85); backdrop-filter: blur(12px); }
+  .hero-gradient { background: linear-gradient(135deg, #1E3A8A 0%, #1e40af 50%, #0D9488 100%); }
+  .section-title { font-family: 'Newsreader', serif; font-size: 2.8rem; color: #1e3a8a; margin-bottom: 1.5rem; letter-spacing: -0.02em; line-height: 1.15; }
+  .card-hover { transition: all 0.3s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+  @media (max-width: 768px) { .section-title { font-size: 2rem; } }
+
+  /* ── Scroll Progress Bar ── */
+  #scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, #0D9488, #1E3A8A, #F59E0B);
+    z-index: 9999; transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(13,148,136,0.6);
+  }
+
+  /* ── Live Availability Banner ── */
+  #live-banner {
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
+    background: white; border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(14,31,59,0.15), 0 2px 8px rgba(0,0,0,0.08);
+    padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+    max-width: 280px; border: 1px solid rgba(14,31,59,0.06);
+    transform: translateY(120px); opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+  }
+  #live-banner.show { transform: translateY(0); opacity: 1; }
+  #live-banner.hide { transform: translateY(120px); opacity: 0; }
+  .live-dot {
+    width: 10px; height: 10px; background: #10b981; border-radius: 50%; flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(16,185,129,0.4);
+    animation: livePulse 2s infinite;
+  }
+  @keyframes livePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+    100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+  }
+  #live-banner-text { flex: 1; }
+  #live-banner-text p { font-size: 0.78rem; font-weight: 600; color: #1e3a8a; line-height: 1.3; }
+  #live-banner-text span { font-size: 0.68rem; color: #64748b; font-weight: 400; }
+  #live-banner a {
+    background: #1e3a8a; color: white; font-size: 0.7rem; font-weight: 700;
+    padding: 7px 14px; border-radius: 20px; text-decoration: none; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  #live-banner a:hover { background: #0D9488; }
+  #live-banner-close {
+    position: absolute; top: -8px; right: -8px; width: 20px; height: 20px;
+    background: #64748b; color: white; border-radius: 50%; border: none; cursor: pointer;
+    font-size: 11px; display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+
+  /* ── Animated Ticker ── */
+  .ticker-wrap { background: linear-gradient(90deg,#0D9488,#1e40af); overflow: hidden; padding: 12px 0; }
+  .ticker-inner { display: flex; width: max-content; animation: ticker 35s linear infinite; }
+  .ticker-inner:hover { animation-play-state: paused; }
+  .ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 32px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.95); white-space: nowrap; }
+  .ticker-sep { width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%; }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── Scroll Reveal ── */
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+  .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+  .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+
+  /* stagger delays */
+  .delay-100 { transition-delay: 0.1s; }
+  .delay-200 { transition-delay: 0.2s; }
+  .delay-300 { transition-delay: 0.3s; }
+  .delay-400 { transition-delay: 0.4s; }
+  .delay-500 { transition-delay: 0.5s; }
+  .delay-600 { transition-delay: 0.6s; }
+
+  /* ── Animated Counter ── */
+  .count-num { display: inline-block; }
+
+  /* ── Floating particles in hero ── */
+  .hero-particle {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    background: rgba(255,255,255,0.06);
+    animation: floatParticle linear infinite;
+  }
+  @keyframes floatParticle {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+    50%  { opacity: 0.1; }
+    100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── Active nav link on scroll ── */
+  nav a.active-section { color: #0D9488 !important; border-bottom-color: #0D9488 !important; }
+
+  /* ── Section entry line ── */
+  .section-tag-line {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #0D9488;
+  }
+  .section-tag-line::before {
+    content: ''; display: block; width: 0; height: 2px; background: #0D9488;
+    transition: width 0.6s ease 0.2s;
+  }
+  .section-tag-line.revealed::before { width: 28px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "Dr. Srikanth Gadiyaram",
+  "description": "Senior Surgical Gastroenterologist & Advanced Laparoscopic Surgeon",
+  "telephone": "+91-9880109971",
+  "medicalSpecialty": "Gastroenterology",
+  "worksFor": {"@type": "Hospital", "name": "Sahasra Hospitals"},
+  "address": {"@type": "PostalAddress", "addressLocality": "Jayanagar", "addressRegion": "Bangalore", "addressCountry": "IN"}
+}
+</script>
 </head>
 <body class="font-sans text-slate-700 antialiased overflow-x-hidden">
-<!-- TopNavBar Component -->
-<nav class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-sm border-b border-slate-100">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<a class="text-2xl font-bold text-blue-900 font-serif" href="#">Dr. Srikanth Gadiyaram</a>
-<div class="hidden md:flex items-center gap-8">
-<ul class="flex gap-8 font-['Newsreader'] tracking-tight">
-<li><a class="text-blue-900 font-bold border-b-2 border-blue-900 py-1" href="#about">About</a></li>
-<li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#expertise">Procedures</a></li>
-<li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#testimonials">Health Hub</a></li>
-<li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#contact">Patient Portal</a></li>
-</ul>
-<a class="bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-800 transition-all scale-95 active:scale-100" href="#contact">Book Appointment</a>
-</div>
-<button class="md:hidden text-blue-900">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-sm border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a class="text-2xl font-bold text-blue-900 font-serif" href="#">Dr. Srikanth Gadiyaram</a>
+    <div class="hidden md:flex items-center gap-8">
+      <ul class="flex gap-8 font-serif tracking-tight">
+        <li><a class="text-blue-900 font-bold border-b-2 border-blue-900 py-1" href="#about">About</a></li>
+        <li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#expertise">Procedures</a></li>
+        <li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#career">Career</a></li>
+        <li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#testimonials">Patients</a></li>
+        <li><a class="text-slate-600 hover:text-blue-800 transition-colors" href="#contact">Contact</a></li>
+      </ul>
+      <a class="bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-800 transition-all" href="#contact">Book Appointment</a>
+    </div>
+    <button class="md:hidden text-blue-900">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
 </nav>
-<!-- Hero Section -->
+
+<!-- Hero -->
 <section class="hero-gradient pt-40 pb-24 text-white relative overflow-hidden">
-<div class="absolute inset-0 opacity-10 pointer-events-none">
-<svg class="h-full w-full" preserveaspectratio="none" viewbox="0 0 100 100">
-<path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
-</svg>
-</div>
-<div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-<h1 class="font-serif text-5xl md:text-7xl mb-6 tracking-tight leading-tight">Precision in Care,<br/>Excellence in Surgery</h1>
-<p class="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto font-light">
-        Surgical Gastroenterologist &amp; Advanced Laparoscopic Specialist at Sahasra Hospitals, Bangalore.
-      </p>
-<div class="flex flex-wrap justify-center gap-4">
-<a class="bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-blue-50 transition-colors" href="#contact">Book Consultation</a>
-<a class="bg-blue-800/30 backdrop-blur-md border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors" href="#expertise">View Procedures</a>
-</div>
-<div class="mt-16 flex justify-center items-center gap-8 text-blue-100 text-sm">
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-warm">verified</span> 20+ Years Expertise</div>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-warm">star</span> 4.8/5 Patient Rating</div>
-</div>
-</div>
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <svg class="h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+      <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
+    </svg>
+  </div>
+  <!-- Floating particles -->
+  <div class="hero-particle" style="width:80px;height:80px;left:8%;top:60%;animation-duration:8s;animation-delay:0s;"></div>
+  <div class="hero-particle" style="width:40px;height:40px;left:20%;top:75%;animation-duration:11s;animation-delay:2s;"></div>
+  <div class="hero-particle" style="width:60px;height:60px;left:75%;top:65%;animation-duration:9s;animation-delay:1s;"></div>
+  <div class="hero-particle" style="width:30px;height:30px;left:88%;top:80%;animation-duration:13s;animation-delay:3s;"></div>
+  <div class="hero-particle" style="width:50px;height:50px;left:50%;top:70%;animation-duration:10s;animation-delay:1.5s;"></div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+    <h1 class="font-serif text-5xl md:text-7xl mb-6 tracking-tight leading-tight">Precision in Care,<br/>Excellence in Surgery</h1>
+    <p class="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto font-light">
+      Senior Surgical Gastroenterologist &amp; Advanced Laparoscopic Specialist at Sahasra Hospitals, Jayanagar, Bangalore.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a class="bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-blue-50 transition-colors" href="#contact">Book Consultation</a>
+      <a class="bg-blue-800/30 backdrop-blur-md border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-colors" href="#expertise">View Procedures</a>
+    </div>
+    <div class="mt-16 flex flex-wrap justify-center items-center gap-8 md:gap-12 text-blue-100 text-sm">
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-yellow-400">verified</span> 30+ Years Expertise</div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-yellow-400">article</span> 34+ Publications</div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-yellow-400">star</span> 4.8/5 Patient Rating</div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-yellow-400">public</span> 3 International Certifications</div>
+    </div>
+  </div>
 </section>
-<!-- About Section -->
+
+<!-- Animated Ticker -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span class="ticker-sep"></span> Advanced Laparoscopic Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> GI Oncology</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Bariatric & Metabolic Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> HPB Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Single Incision Laparoscopic</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Pancreatic Whipple's</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Robotic Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Redo & Revision Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Liver Transplantation</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Esophageal Resection</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Advanced Laparoscopic Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> GI Oncology</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Bariatric & Metabolic Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> HPB Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Single Incision Laparoscopic</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Pancreatic Whipple's</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Robotic Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Redo & Revision Surgery</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Liver Transplantation</span>
+    <span class="ticker-item"><span class="ticker-sep"></span> Esophageal Resection</span>
+  </div>
+</div>
+
+<!-- About -->
 <section class="py-24 bg-white" id="about">
-<div class="max-w-7xl mx-auto px-6">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="relative">
-<div class="absolute -top-4 -left-4 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl"></div>
-<img alt="Advanced Surgical Technology" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[500px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7qKADKmPRSFRDCaNcBJRuQ9Yy3zEAhde9enB0w69757xpxvcgmuSESzVh6MnknpzUav-rL1IqqtBK5iEtiMXdhBXTAiZO8GnX7PSm2jPvcEIUjGR-_-7PEKKM27iTm_wnsKjmRdobPfi4YkbyqEZMzb7iT9PGy_Cj6MhTkPmGw1gz1OKSlMvuqZU_ciHblCQST7zzzVkmFMVw58wwWZBZqDHq7I1kwb4zAW-m1uzwm3n7_NKvcAWcCsNuMPyADzNQsvG4rRVGOnp-"/>
-<div class="absolute -bottom-6 -right-6 bg-blue-900 text-white p-8 rounded-2xl shadow-xl z-20 hidden md:block">
-<p class="text-3xl font-serif font-bold italic mb-1">MS · MCh · FMAS</p>
-<p class="text-blue-200 uppercase tracking-widest text-xs font-bold">Academic Prestige</p>
-</div>
-</div>
-<div>
-<h2 class="section-title">A Legacy of Surgical Excellence</h2>
-<p class="text-xl text-slate-600 mb-6 leading-relaxed">
-            Dr. Srikanth Gadiyaram is a distinguished Senior Surgical Gastroenterologist and the visionary founder of Sahasra Hospitals. With training from SGPGI, Lucknow, he specializes in high-complexity redo-surgeries and advanced laparoscopy.
-          </p>
-<div class="space-y-4 mb-8">
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-teal-600 mt-1">check_circle</span>
-<div><h4 class="font-bold text-slate-900">Advanced Laparoscopic Pioneer</h4><p class="text-sm text-slate-500">Expert in Single Incision Laparoscopic Surgery (SILS) and minimally invasive techniques.</p></div>
-</div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-teal-600 mt-1">check_circle</span>
-<div><h4 class="font-bold text-slate-900">GI Oncology Specialist</h4><p class="text-sm text-slate-500">Surgical management of complex cancers including esophagus, stomach, and pancreas.</p></div>
-</div>
-</div>
-<a class="inline-flex items-center text-blue-900 font-bold hover:text-teal-600 transition-colors group" href="#contact">
-            Learn more about Dr. Gadiyaram's research 
-            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      <div class="reveal-left">
+        <!-- Doctor Photo Card -->
+        <div class="rounded-2xl shadow-2xl overflow-hidden w-full" style="height:360px; background: linear-gradient(160deg,#1E3A8A 0%,#1e40af 50%,#0D9488 100%); position:relative;">
+          <!-- decorative rings -->
+          <div style="position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);top:-60px;right:-60px;"></div>
+          <div style="position:absolute;width:160px;height:160px;border-radius:50%;border:1px solid rgba(255,255,255,0.07);bottom:-30px;left:-30px;"></div>
+          <img
+            alt="Dr. Srikanth Gadiyaram"
+            style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:relative;z-index:2;"
+            src="https://images.weserv.nl/?url=sahasrahospitals.com/wp-content/uploads/2022/07/WhatsApp-Image-2022-06-13-at-5.51.53-PM.jpeg&w=800&output=jpg"
+            onerror="this.style.display='none';"
+          />
+        </div>
+
+        <!-- Info strip BELOW photo — no gap -->
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4 mt-3 flex flex-col gap-3">
+          <div>
+            <p class="font-serif font-bold text-blue-900 text-lg leading-tight">Dr. Srikanth Gadiyaram</p>
+            <p class="text-xs text-slate-500 mt-0.5">MS · MCh (Surgical Gastro) · FMAS</p>
+            <p class="text-xs text-teal-600 mt-0.5 font-semibold">Sahasra Hospitals · Jayanagar, Bangalore</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-blue-50 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">30+ Years</span>
+            <span class="bg-blue-50 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100">34+ Publications</span>
+            <span class="bg-teal-50 text-teal-700 text-xs font-semibold px-3 py-1 rounded-full border border-teal-100">DHA Certified</span>
+            <span class="bg-teal-50 text-teal-700 text-xs font-semibold px-3 py-1 rounded-full border border-teal-100">OHA Certified</span>
+          </div>
+          <div class="flex flex-col gap-1.5 pt-2 border-t border-slate-100">
+            <div class="flex items-center gap-2 text-xs text-slate-500">
+              <span class="material-symbols-outlined text-teal-500" style="font-size:14px;">school</span>
+              JIPMER, Pondicherry &amp; SGPGIMS, Lucknow
+            </div>
+            <div class="flex items-center gap-2 text-xs text-slate-500">
+              <span class="material-symbols-outlined text-teal-500" style="font-size:14px;">flight</span>
+              Fellowship · University of Minnesota, USA
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title">A Legacy of Surgical Excellence</h2>
+        <p class="text-xl text-slate-600 mb-6 leading-relaxed">
+          Dr. Srikanth Gadiyaram is a distinguished Senior Surgical Gastroenterologist and founder-director of Sahasra Hospitals. Trained at JIPMER, Pondicherry and SGPGIMS, Lucknow, he completed an advanced fellowship in Laparoscopic &amp; Bariatric Surgery at the University of Minnesota under Prof. Sayed Ikramuddin.
+        </p>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-teal-600 mt-1">check_circle</span>
+            <div><h4 class="font-bold text-slate-900">SILS Pioneer — Largest Experience in South India</h4><p class="text-sm text-slate-500">Started Single Incision Laparoscopic Surgery in July 2009; pioneered SILS for cholecystectomy, splenectomy, distal pancreatectomy, hemicolectomy and more.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-teal-600 mt-1">check_circle</span>
+            <div><h4 class="font-bold text-slate-900">GI Oncology &amp; HPB Specialist</h4><p class="text-sm text-slate-500">Expert in esophageal, gastric, pancreatic and liver cancer surgery including totally laparoscopic Whipple Pancreaticoduodenectomy and major laparoscopic liver resections.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-teal-600 mt-1">check_circle</span>
+            <div><h4 class="font-bold text-slate-900">Internationally Certified Surgeon</h4><p class="text-sm text-slate-500">Certified by Dubai Health Authority (DHA) and Oman Health Authority (OHA). Consulting surgeon at Medeor &amp; Medcare Hospitals, Dubai and Apollo Hospital, Bangalore.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="material-symbols-outlined text-teal-600 mt-1">check_circle</span>
+            <div><h4 class="font-bold text-slate-900">Robotic Surgery Certified</h4><p class="text-sm text-slate-500">Certified on CMR Surgical Versius (UK) and Da Vinci (IRCAD–Taiwan/AITS) robotic platforms.</p></div>
+          </div>
+        </div>
+        <!-- Credentials grid -->
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+            <p class="font-bold text-blue-900 font-serif text-lg">MBBS · 1992</p>
+            <p class="text-xs text-slate-500 mt-1">JIPMER, Pondicherry</p>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+            <p class="font-bold text-blue-900 font-serif text-lg">MS · 1997</p>
+            <p class="text-xs text-slate-500 mt-1">JIPMER, Pondicherry</p>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+            <p class="font-bold text-blue-900 font-serif text-lg">MCh · 2002</p>
+            <p class="text-xs text-slate-500 mt-1">SGPGIMS, Lucknow — Surgical Gastroenterology</p>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+            <p class="font-bold text-blue-900 font-serif text-lg">Fellowship · 2009</p>
+            <p class="text-xs text-slate-500 mt-1">University of Minnesota — MIS &amp; Bariatrics</p>
+          </div>
+        </div>
+        <a class="inline-flex items-center text-blue-900 font-bold hover:text-teal-600 transition-colors group" href="#contact">
+          Book a consultation with Dr. Gadiyaram
+          <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Expertise Section -->
+
+<!-- Expertise / Procedures -->
 <section class="py-24 bg-slate-50" id="expertise">
-<div class="max-w-7xl mx-auto px-6 text-center">
-<span class="text-teal-600 font-bold tracking-widest uppercase text-sm">Specialized Services</span>
-<h2 class="section-title mt-4">Pioneering Procedural Precision</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-<div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left">
-<div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-3xl">precision_manufacturing</span>
-</div>
-<h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">Laparoscopic Surgery</h3>
-<p class="text-slate-600 mb-6">Minimally invasive approaches for faster recovery, reduced pain, and minimal scarring across all abdominal procedures.</p>
-<ul class="text-sm space-y-2 text-slate-500 font-medium">
-<li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> SILS (Single Port)</li>
-<li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Gallbladder &amp; Hernia</li>
-</ul>
-</div>
-<div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left relative overflow-hidden">
-<div class="absolute top-0 right-0 w-24 h-24 bg-teal-50 opacity-50 rounded-bl-full"></div>
-<div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-3xl">monitor_weight</span>
-</div>
-<h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">Bariatric &amp; Metabolic</h3>
-<p class="text-slate-600 mb-6">Transformative weight-loss surgeries including sleeve gastrectomy and gastric bypass for obesity and diabetes management.</p>
-<ul class="text-sm space-y-2 text-slate-500 font-medium">
-<li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Sleeve Gastrectomy</li>
-<li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Gastric Bypass</li>
-</ul>
-</div>
-<div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left">
-<div class="w-16 h-16 bg-blue-900 text-white rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-3xl">oncology</span>
-</div>
-<h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">GI Oncology</h3>
-<p class="text-slate-600 mb-6">Comprehensive surgical oncology for the digestive tract, utilizing 3D imaging for extreme precision in tumor resection.</p>
-<ul class="text-sm space-y-2 text-slate-500 font-medium">
-<li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Pancreatic Whipple's</li>
-<li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Esophageal Resection</li>
-</ul>
-</div>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <span class="text-teal-600 font-bold tracking-widest uppercase text-sm">Specialized Services</span>
+    <h2 class="section-title mt-4">Pioneering Procedural Precision</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+
+      <!-- Card 1 -->
+      <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left">
+        <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-2xl flex items-center justify-center mb-8">
+          <span class="material-symbols-outlined text-3xl">precision_manufacturing</span>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">Laparoscopic Surgery</h3>
+        <p class="text-slate-600 mb-6">Minimally invasive approaches for faster recovery, reduced pain, and minimal scarring. Pioneer of SILS — South India's largest single-incision experience.</p>
+        <ul class="text-sm space-y-2 text-slate-500 font-medium">
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> SILS — Single Incision Laparoscopic</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Cholecystectomy &amp; Hernia Repair</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Colorectal Resections</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Esophagectomy &amp; Fundoplication</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-teal-50 opacity-50 rounded-bl-full"></div>
+        <div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-8">
+          <span class="material-symbols-outlined text-3xl">monitor_weight</span>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">Bariatric &amp; Metabolic</h3>
+        <p class="text-slate-600 mb-6">Transformative weight-loss surgeries. Programme established in May 2006 — one of Bangalore's earliest and most experienced bariatric units.</p>
+        <ul class="text-sm space-y-2 text-slate-500 font-medium">
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Laparoscopic Sleeve Gastrectomy</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Laparoscopic Gastric Bypass</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Revisional Bariatric Surgery</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Metabolic Surgery for T2 Diabetes</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left">
+        <div class="w-16 h-16 bg-blue-900 text-white rounded-2xl flex items-center justify-center mb-8">
+          <span class="material-symbols-outlined text-3xl">oncology</span>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">GI Oncology</h3>
+        <p class="text-slate-600 mb-6">Comprehensive surgical oncology for the digestive tract using minimally invasive and open techniques with 3D imaging precision.</p>
+        <ul class="text-sm space-y-2 text-slate-500 font-medium">
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Whipple Pancreaticoduodenectomy</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Esophageal &amp; Gastric Cancer</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Colorectal Cancer Resection</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Liver Tumour Resection</li>
+        </ul>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left">
+        <div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center mb-8">
+          <span class="material-symbols-outlined text-3xl">healing</span>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">HPB Surgery</h3>
+        <p class="text-slate-600 mb-6">Hepato-Biliary-Pancreatic surgery including laparoscopic major liver resections, bile duct reconstruction and portal hypertension procedures.</p>
+        <ul class="text-sm space-y-2 text-slate-500 font-medium">
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Major Laparoscopic Liver Resections</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Bile Duct Stricture Repair</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Pancreatic Cystic Neoplasms</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Portal Hypertension Surgery</li>
+        </ul>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 opacity-50 rounded-bl-full"></div>
+        <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-2xl flex items-center justify-center mb-8">
+          <span class="material-symbols-outlined text-3xl">reset_wrench</span>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">Complex Redo Surgery</h3>
+        <p class="text-slate-600 mb-6">Nationally recognised expertise in revisional surgery for patients whose previous procedures have failed or led to complications.</p>
+        <ul class="text-sm space-y-2 text-slate-500 font-medium">
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Redo Biliary Stricture Repair</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Revisional Cholecystectomy</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Failed Fundoplication Revision</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Revisional Bariatric Surgery</li>
+        </ul>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover text-left">
+        <div class="w-16 h-16 bg-blue-900 text-white rounded-2xl flex items-center justify-center mb-8">
+          <span class="material-symbols-outlined text-3xl">smart_toy</span>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-blue-900 mb-4">Robotic Surgery</h3>
+        <p class="text-slate-600 mb-6">Certified on two leading robotic platforms for ultra-precise, minimally invasive procedures with superior outcomes.</p>
+        <ul class="text-sm space-y-2 text-slate-500 font-medium">
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> CMR Surgical Versius Certified</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Da Vinci Certified (IRCAD–Taiwan)</li>
+          <li class="flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span> Robotic GI &amp; Bariatric Procedures</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
 </section>
-<!-- Testimonials Section -->
+
+<!-- Career Timeline -->
+<section class="py-24 bg-white" id="career">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-teal-600 font-bold tracking-widest uppercase text-sm">Professional Journey</span>
+      <h2 class="section-title mt-4">30+ Years of Clinical Leadership</h2>
+    </div>
+
+    <!-- Stats row — live counters -->
+    <div id="career-stats" class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+      <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 relative overflow-hidden" style="transition:box-shadow 0.3s;">
+        <div class="stat-bar" style="position:absolute;bottom:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#0D9488,#1e3a8a);transition:width 1.8s ease;"></div>
+        <p class="text-4xl font-serif font-bold text-blue-900 mb-2">
+          <span class="live-counter" data-target="34" data-suffix="+">0</span>
+        </p>
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-medium">Peer-Reviewed Publications</p>
+      </div>
+      <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 relative overflow-hidden">
+        <div class="stat-bar" style="position:absolute;bottom:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#0D9488,#1e3a8a);transition:width 1.8s ease 0.2s;"></div>
+        <p class="text-4xl font-serif font-bold text-blue-900 mb-2">
+          <span class="live-counter" data-target="17" data-suffix="+">0</span>
+        </p>
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-medium">National &amp; International Awards</p>
+      </div>
+      <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 relative overflow-hidden">
+        <div class="stat-bar" style="position:absolute;bottom:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#0D9488,#1e3a8a);transition:width 1.8s ease 0.4s;"></div>
+        <p class="text-4xl font-serif font-bold text-blue-900 mb-2">
+          <span class="live-counter" data-target="30" data-suffix="+">0</span>
+        </p>
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-medium">Live Operative Workshops</p>
+      </div>
+      <div class="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 relative overflow-hidden">
+        <div class="stat-bar" style="position:absolute;bottom:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#0D9488,#1e3a8a);transition:width 1.8s ease 0.6s;"></div>
+        <p class="text-4xl font-serif font-bold text-blue-900 mb-2">
+          <span class="live-counter" data-target="3" data-suffix="">0</span>
+        </p>
+        <p class="text-xs text-slate-500 uppercase tracking-wider font-medium">International Certifications</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 transform md:-translate-x-1/2"></div>
+      <div class="space-y-12">
+
+        <div class="relative flex flex-col md:flex-row md:items-center gap-6">
+          <div class="md:w-1/2 md:text-right md:pr-12">
+            <span class="inline-block bg-blue-900 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">2017 — Present</span>
+            <h4 class="font-serif font-bold text-blue-900 text-xl mb-2">Director of Surgical Gastroenterology</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Sahasra Hospitals, Jayanagar, Bangalore (Founder &amp; Director). Concurrent Visiting Consultant at Apollo Hospital, Bannerghatta Road. DHA-certified Surgeon at Medeor &amp; Medcare Hospitals, Dubai.</p>
+          </div>
+          <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-teal-500 rounded-full transform md:-translate-x-1/2 border-2 border-white shadow"></div>
+          <div class="md:w-1/2 md:pl-12 pl-16"></div>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row md:items-center gap-6">
+          <div class="md:w-1/2 md:text-right md:pr-12 md:order-1 pl-16 md:pl-0"></div>
+          <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-teal-500 rounded-full transform md:-translate-x-1/2 border-2 border-white shadow"></div>
+          <div class="md:w-1/2 md:pl-12 md:order-3 pl-16">
+            <span class="inline-block bg-teal-600 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">2011 — 2014</span>
+            <h4 class="font-serif font-bold text-blue-900 text-xl mb-2">Director of Gastroenterology Services</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">BGS Global Hospital, Bangalore. Chief Consultant for Surgical Gastroenterology, MIS and Bariatric Surgery. Initiated Laparoscopic Kidney Donor Programme.</p>
+          </div>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row md:items-center gap-6">
+          <div class="md:w-1/2 md:text-right md:pr-12">
+            <span class="inline-block bg-blue-900 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">2003 — 2011</span>
+            <h4 class="font-serif font-bold text-blue-900 text-xl mb-2">Senior Consultant Surgical Gastroenterologist</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Manipal Hospital, Bangalore. Established the Bariatric Surgery programme (May 2006) and pioneered SILS procedures (July 2009) — building the largest SILS experience in South India.</p>
+          </div>
+          <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-teal-500 rounded-full transform md:-translate-x-1/2 border-2 border-white shadow"></div>
+          <div class="md:w-1/2 md:pl-12 pl-16"></div>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row md:items-center gap-6">
+          <div class="md:w-1/2 md:text-right md:pr-12 md:order-1 pl-16 md:pl-0"></div>
+          <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-slate-300 rounded-full transform md:-translate-x-1/2 border-2 border-white shadow"></div>
+          <div class="md:w-1/2 md:pl-12 md:order-3 pl-16">
+            <span class="inline-block bg-slate-600 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">1998 — 2002</span>
+            <h4 class="font-serif font-bold text-blue-900 text-xl mb-2">Senior Resident — SGPGIMS, Lucknow</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Advanced training in Surgical Gastroenterology. Published landmark research on pancreatic abscess, bile duct strictures, and portal hypertension in indexed international journals.</p>
+          </div>
+        </div>
+
+        <div class="relative flex flex-col md:flex-row md:items-center gap-6">
+          <div class="md:w-1/2 md:text-right md:pr-12">
+            <span class="inline-block bg-slate-600 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-3">1997 — 1998</span>
+            <h4 class="font-serif font-bold text-blue-900 text-xl mb-2">Surgical Registrar — Breach Candy Hospital, Mumbai</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Minimal Access Surgery training under Prof. Tehempton E. Udwadia — one of India's foremost laparoscopic surgeons.</p>
+          </div>
+          <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-slate-300 rounded-full transform md:-translate-x-1/2 border-2 border-white shadow"></div>
+          <div class="md:w-1/2 md:pl-12 pl-16"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
 <section class="py-24 bg-white relative overflow-hidden" id="testimonials">
-<div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
-<div class="max-w-7xl mx-auto px-6 relative z-10">
-<div class="text-center mb-16">
-<h2 class="section-title">Patient Success Stories</h2>
-<p class="text-slate-500 max-w-xl mx-auto">Real experiences from patients who entrusted their care to Dr. Gadiyaram's surgical expertise.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-<!-- Testimonial 1 -->
-<div class="bg-slate-50 p-8 rounded-3xl relative">
-<div class="absolute -top-6 left-8 flex -space-x-2">
-<img alt="Patient" class="w-14 h-14 rounded-full border-4 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzi19JOSWdV_XDeD7IapjyYDa3z2NrLKCctCbhUlqYmDwOa6fFj1CUJtR31pP0sIO6_S1sHWk9tQ6Y7obyVj7UhMJpIiTX6YZtI1f0a8n7M4hMglgxOJ1Yaj3K8eZc4dkKkkdLjkB7_8TGiWzFEkmUhoLPpjAm8nJ-zRFGE78ADKTee3PQQvq_4v6NivOpsYPs1IA9MLCCKSimNzp_ZEfizxgEeGeJVEDEx_1vJjljmg998foADBVnIBtKRxrsqO7XV8w1TQsn6ddf"/>
-</div>
-<div class="mt-4">
-<p class="text-slate-600 italic mb-6 leading-relaxed">"The clarity with which Dr. Gadiyaram explained my sleeve gastrectomy procedure removed all my anxiety. Six months later, my life has completely changed for the better."</p>
-<div>
-<h4 class="font-bold text-blue-900">Ananya Sharma</h4>
-<p class="text-xs text-teal-600 font-bold uppercase tracking-wider">Bariatric Surgery Patient</p>
-</div>
-</div>
-</div>
-<!-- Testimonial 2 -->
-<div class="bg-blue-900 p-8 rounded-3xl text-white shadow-xl shadow-blue-900/20">
-<div class="absolute -top-6 left-8 flex -space-x-2">
-<img alt="Patient" class="w-14 h-14 rounded-full border-4 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfuysSE_vc_6MXGxy7y-A90kFlhKCTpIhHi8dGr0tQM6Le3VFf0NcjHxLULwAycGSn5WXefI8ydpzrw32hn-v3XeyNXnBhxfVOnGIQ8S_3XUuEGB5Pkk7zL6NsLHcZgLVE1BiInLiHIVfvEiiD3KPm-9UdD-mw5nC5wGszY7iOhrHnv0Z4rhIOYb1n5bt1Vo5FvA2ABwGVaawTP6Opr2LzkEx2IXPnaDEb6OZdvYWJo5IoBy83DbC4cdYzNGkNrDjczw7fNDoJDGW1"/>
-</div>
-<div class="mt-4">
-<p class="text-blue-100 italic mb-6 leading-relaxed">"After being turned away by others for a complex hernia redo-surgery, Dr. Srikanth's expertise was a lifesaver. His precision and the care at Sahasra were unparalleled."</p>
-<div>
-<h4 class="font-bold">Rahul Verma</h4>
-<p class="text-xs text-teal-400 font-bold uppercase tracking-wider">Complex Redo Surgery</p>
-</div>
-</div>
-</div>
-<!-- Testimonial 3 -->
-<div class="bg-slate-50 p-8 rounded-3xl relative">
-<div class="absolute -top-6 left-8 flex -space-x-2">
-<img alt="Patient" class="w-14 h-14 rounded-full border-4 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFjpvFd2ohxo9-HpHYzOUzQZLE5VYJZA7yOuyPWp3PDxTFU6t0uytKWK4rbLp68iNI-vV-d2hwPcZkFwinsytufPWeXbFMyltl9ORn4RpjvQ4zP_2PKChOWNO5ToBS9m6YCEnesRI2hMWutDSrJ6VEbHLAUjGqiU3nY1hRZXTzseaErmdxLD94VDJhMa2jYGg2xz7cvIz0ihZt5rpc8H12WmcSe74efTdes7JKI5FhsJMrPPll5zaZHtwoepbO4OAL4xGwlUs3LzFZ"/>
-</div>
-<div class="mt-4">
-<p class="text-slate-600 italic mb-6 leading-relaxed">"The advanced laparoscopic technique used for my gallbladder removal meant I was back home the next day. A truly modern clinical experience."</p>
-<div>
-<h4 class="font-bold text-blue-900">Priya K.</h4>
-<p class="text-xs text-teal-600 font-bold uppercase tracking-wider">Laparoscopic Cholecystectomy</p>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-16 text-center">
-<a class="text-blue-900 font-bold hover:underline underline-offset-8 decoration-teal-500" href="#">Read all 200+ patient reviews</a>
-</div>
-</div>
+  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-teal-600 font-bold tracking-widest uppercase text-sm">Patient Stories</span>
+      <h2 class="section-title mt-4">Patient Success Stories</h2>
+      <p class="text-slate-500 max-w-xl mx-auto">Real experiences from patients who entrusted their care to Dr. Gadiyaram's surgical expertise.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <div class="bg-slate-50 p-8 rounded-3xl relative">
+        <div class="absolute -top-6 left-8">
+          <img alt="Patient" class="w-14 h-14 rounded-full border-4 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzi19JOSWdV_XDeD7IapjyYDa3z2NrLKCctCbhUlqYmDwOa6fFj1CUJtR31pP0sIO6_S1sHWk9tQ6Y7obyVj7UhMJpIiTX6YZtI1f0a8n7M4hMglgxOJ1Yaj3K8eZc4dkKkkdLjkB7_8TGiWzFEkmUhoLPpjAm8nJ-zRFGE78ADKTee3PQQvq_4v6NivOpsYPs1IA9MLCCKSimNzp_ZEfizxgEeGeJVEDEx_1vJjljmg998foADBVnIBtKRxrsqO7XV8w1TQsn6ddf"/>
+        </div>
+        <div class="mt-4">
+          <p class="text-slate-600 italic mb-6 leading-relaxed">"The clarity with which Dr. Gadiyaram explained my sleeve gastrectomy removed all my anxiety. Six months later, my life has completely changed for the better."</p>
+          <div>
+            <h4 class="font-bold text-blue-900">Ananya Sharma</h4>
+            <p class="text-xs text-teal-600 font-bold uppercase tracking-wider">Bariatric Surgery Patient</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-900 p-8 rounded-3xl text-white shadow-xl shadow-blue-900/20">
+        <div class="absolute -top-6 left-8">
+          <img alt="Patient" class="w-14 h-14 rounded-full border-4 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfuysSE_vc_6MXGxy7y-A90kFlhKCTpIhHi8dGr0tQM6Le3VFf0NcjHxLULwAycGSn5WXefI8ydpzrw32hn-v3XeyNXnBhxfVOnGIQ8S_3XUuEGB5Pkk7zL6NsLHcZgLVE1BiInLiHIVfvEiiD3KPm-9UdD-mw5nC5wGszY7iOhrHnv0Z4rhIOYb1n5bt1Vo5FvA2ABwGVaawTP6Opr2LzkEx2IXPnaDEb6OZdvYWJo5IoBy83DbC4cdYzNGkNrDjczw7fNDoJDGW1"/>
+        </div>
+        <div class="mt-4">
+          <p class="text-blue-100 italic mb-6 leading-relaxed">"After being turned away by others for a complex hernia redo-surgery, Dr. Srikanth's expertise was a lifesaver. His precision and the care at Sahasra were unparalleled."</p>
+          <div>
+            <h4 class="font-bold">Rahul Verma</h4>
+            <p class="text-xs text-teal-400 font-bold uppercase tracking-wider">Complex Redo Surgery</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 p-8 rounded-3xl relative">
+        <div class="absolute -top-6 left-8">
+          <img alt="Patient" class="w-14 h-14 rounded-full border-4 border-white shadow-md object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFjpvFd2ohxo9-HpHYzOUzQZLE5VYJZA7yOuyPWp3PDxTFU6t0uytKWK4rbLp68iNI-vV-d2hwPcZkFwinsytufPWeXbFMyltl9ORn4RpjvQ4zP_2PKChOWNO5ToBS9m6YCEnesRI2hMWutDSrJ6VEbHLAUjGqiU3nY1hRZXTzseaErmdxLD94VDJhMa2jYGg2xz7cvIz0ihZt5rpc8H12WmcSe74efTdes7JKI5FhsJMrPPll5zaZHtwoepbO4OAL4xGwlUs3LzFZ"/>
+        </div>
+        <div class="mt-4">
+          <p class="text-slate-600 italic mb-6 leading-relaxed">"The advanced laparoscopic technique used for my gallbladder removal meant I was back home the next day. A truly modern clinical experience."</p>
+          <div>
+            <h4 class="font-bold text-blue-900">Priya K.</h4>
+            <p class="text-xs text-teal-600 font-bold uppercase tracking-wider">Laparoscopic Cholecystectomy</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="mt-16 text-center">
+      <a class="text-blue-900 font-bold hover:underline underline-offset-8 decoration-teal-500" href="#">Read all 200+ patient reviews</a>
+    </div>
+  </div>
 </section>
+
 <!-- Health Hub / CTA -->
 <section class="py-20 bg-teal-900 text-white overflow-hidden relative">
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-<div>
-<h2 class="font-serif text-4xl mb-6 leading-tight">Access the Digital Health Hub</h2>
-<p class="text-teal-100 mb-8 text-lg font-light">Prepare for your consultation with 3D procedural guides, recovery vlogs, and our AI-powered symptoms triage tool.</p>
-<div class="flex gap-4">
-<button class="bg-teal-500 hover:bg-teal-400 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-colors">
-<span class="material-symbols-outlined">play_circle</span> Procedural Vlogs
-          </button>
-<button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-xl font-bold transition-colors">
-            Patient Intake Form
-          </button>
-</div>
-</div>
-<div class="relative">
-<div class="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
-<div class="flex items-center gap-4 mb-6">
-<div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined">smart_toy</span>
-</div>
-<div>
-<p class="font-bold">AI Health Assistant</p>
-<p class="text-xs text-teal-300">Available 24/7 for Triage</p>
-</div>
-</div>
-<div class="space-y-4">
-<div class="bg-teal-800/50 p-4 rounded-2xl rounded-tl-none mr-12 text-sm italic">"Hello! I can help you understand your symptoms or guide you to the right procedure."</div>
-<div class="bg-teal-600 p-4 rounded-2xl rounded-tr-none ml-12 text-sm font-medium">"I'm experiencing persistent heartburn and weight loss."</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="font-serif text-4xl mb-6 leading-tight">Access the Digital Health Hub</h2>
+      <p class="text-teal-100 mb-8 text-lg font-light">Prepare for your consultation with 3D procedural guides, recovery vlogs, and our AI-powered symptoms triage tool.</p>
+      <div class="flex gap-4 flex-wrap">
+        <button class="bg-teal-500 hover:bg-teal-400 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-colors">
+          <span class="material-symbols-outlined">play_circle</span> Procedural Vlogs
+        </button>
+        <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-xl font-bold transition-colors">
+          Patient Intake Form
+        </button>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined">smart_toy</span>
+          </div>
+          <div>
+            <p class="font-bold">AI Health Assistant</p>
+            <p class="text-xs text-teal-300">Available 24/7 for Triage</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-teal-800/50 p-4 rounded-2xl rounded-tl-none mr-12 text-sm italic">"Hello! I can help you understand your symptoms or guide you to the right procedure."</div>
+          <div class="bg-teal-600 p-4 rounded-2xl rounded-tr-none ml-12 text-sm font-medium">"I'm experiencing persistent heartburn and weight loss."</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Footer Component -->
+
+<!-- Contact -->
+<section class="py-24 bg-slate-50" id="contact">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-teal-600 font-bold tracking-widest uppercase text-sm">Get in Touch</span>
+      <h2 class="section-title mt-4">Book an Appointment</h2>
+      <p class="text-slate-500 max-w-xl mx-auto">Reach us at Sahasra Hospitals, Jayanagar, or through any channel below. We respond within 24 hours.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Contact info -->
+      <div class="space-y-6">
+        <div class="bg-white rounded-2xl p-6 border border-slate-100 flex items-start gap-4">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-blue-900">location_on</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-blue-900 mb-1">Hospital Address</h4>
+            <p class="text-slate-500 text-sm">27/B, New No. 30, 39th Cross,<br/>Jayanagar 8th Block, Bangalore 560082</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-slate-100 flex items-start gap-4">
+          <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-teal-600">phone</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-blue-900 mb-1">Phone</h4>
+            <p class="text-slate-500 text-sm">+91 98801 09971<br/>+91 80 2608 0100</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-slate-100 flex items-start gap-4">
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-blue-900">mail</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-blue-900 mb-1">Email</h4>
+            <p class="text-slate-500 text-sm">srikanthgastro@gmail.com</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-slate-100 flex items-start gap-4">
+          <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-teal-600">flight</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-blue-900 mb-1">International Clinics</h4>
+            <p class="text-slate-500 text-sm">Medeor Hospital, Dubai &amp; Medcare Hospital, Dubai<br/>(Dubai Health Authority Certified)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm">
+        <h3 class="font-serif font-bold text-blue-900 text-2xl mb-8">Request a Consultation</h3>
+        <div class="space-y-5">
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
+            <input type="text" placeholder="Your full name" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-700 text-sm focus:outline-none focus:border-blue-400 transition-colors bg-slate-50"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+            <input type="tel" placeholder="+91 00000 00000" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-700 text-sm focus:outline-none focus:border-blue-400 transition-colors bg-slate-50"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Area of Concern</label>
+            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-700 text-sm focus:outline-none focus:border-blue-400 transition-colors bg-slate-50">
+              <option value="">Select a procedure or concern</option>
+              <option>Laparoscopic / Keyhole Surgery</option>
+              <option>Bariatric / Weight-Loss Surgery</option>
+              <option>GI Cancer / Oncology</option>
+              <option>HPB (Liver, Bile Duct, Pancreas)</option>
+              <option>Redo / Revision Surgery</option>
+              <option>Robotic Surgery</option>
+              <option>General Consultation</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Brief Description</label>
+            <textarea rows="4" placeholder="Briefly describe your condition or symptoms…" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-700 text-sm focus:outline-none focus:border-blue-400 transition-colors bg-slate-50 resize-none"></textarea>
+          </div>
+          <button onclick="alert('Thank you. We will contact you shortly to confirm your appointment.')" class="w-full bg-blue-900 text-white py-4 rounded-full font-bold text-sm hover:bg-teal-600 transition-colors">
+            Submit Request →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="bg-slate-100 w-full py-12 px-6 mt-0">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-<div class="space-y-4">
-<h3 class="font-serif text-lg font-semibold text-blue-900">Dr. Srikanth Gadiyaram</h3>
-<p class="text-slate-500 font-['Inter'] text-sm leading-relaxed">
-          Senior Surgical Gastroenterologist &amp; Advanced Laparoscopic Surgeon specializing in gastrointestinal oncology and bariatric excellence.
-        </p>
-<p class="text-blue-900 font-semibold text-sm">Sahasra Hospitals, Jayanagar, Bangalore</p>
-</div>
-<div class="space-y-4">
-<h4 class="text-slate-900 font-bold text-sm uppercase tracking-wider">Quick Links</h4>
-<ul class="space-y-2 font-['Inter'] text-sm">
-<li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Recovery Guides</a></li>
-<li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Patient Portal</a></li>
-<li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Academic Research</a></li>
-<li><a class="text-teal-600 font-semibold hover:underline decoration-teal-500 underline-offset-4" href="#">Testimonials</a></li>
-</ul>
-</div>
-<div class="space-y-4">
-<h4 class="text-slate-900 font-bold text-sm uppercase tracking-wider">Contact &amp; Privacy</h4>
-<p class="text-slate-500 font-['Inter'] text-sm leading-relaxed">Emergency: +91 98801 05829</p>
-<ul class="space-y-2 font-['Inter'] text-sm">
-<li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a></li>
-<li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 transition-opacity opacity-80 hover:opacity-100" href="#">Contact Us</a></li>
-</ul>
-</div>
-</div>
-<div class="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-slate-200 text-center">
-<p class="text-slate-400 font-['Inter'] text-xs">© 2024 Dr. Srikanth Gadiyaram. All surgical precision reserved.</p>
-</div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div class="space-y-4">
+      <h3 class="font-serif text-lg font-semibold text-blue-900">Dr. Srikanth Gadiyaram</h3>
+      <p class="text-slate-500 font-sans text-sm leading-relaxed">
+        Senior Surgical Gastroenterologist &amp; Advanced Laparoscopic Surgeon. Director, Sahasra Hospitals. MS · MCh · FMAS. DHA &amp; OHA Certified. Stanford Design Thinking.
+      </p>
+      <p class="text-blue-900 font-semibold text-sm">Sahasra Hospitals, Jayanagar, Bangalore</p>
+    </div>
+    <div class="space-y-4">
+      <h4 class="text-slate-900 font-bold text-sm uppercase tracking-wider">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 opacity-80 hover:opacity-100" href="#about">About & Biography</a></li>
+        <li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 opacity-80 hover:opacity-100" href="#expertise">Procedures & Specialisations</a></li>
+        <li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 opacity-80 hover:opacity-100" href="#career">Career & Publications</a></li>
+        <li><a class="text-teal-600 font-semibold hover:underline decoration-teal-500 underline-offset-4" href="#testimonials">Patient Stories</a></li>
+        <li><a class="text-slate-500 hover:underline decoration-teal-500 underline-offset-4 opacity-80 hover:opacity-100" href="#contact">Book Appointment</a></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h4 class="text-slate-900 font-bold text-sm uppercase tracking-wider">Contact &amp; Clinics</h4>
+      <p class="text-slate-500 text-sm">Sahasra Hospitals: +91 98801 09971</p>
+      <p class="text-slate-500 text-sm">+91 80 2608 0100</p>
+      <p class="text-slate-500 text-sm">Apollo Hospital, Bannerghatta Road</p>
+      <p class="text-slate-500 text-sm">Medeor &amp; Medcare Hospitals, Dubai</p>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 pt-12 mt-12 border-t border-slate-200 text-center">
+    <p class="text-slate-400 text-xs">&copy; 2025 Dr. Srikanth Gadiyaram · All surgical precision reserved.</p>
+  </div>
 </footer>
-</body></html>
+
+<script>
+  // ── Live Counters on Scroll ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const stepTime = 16;
+    const steps = duration / stepTime;
+    const increment = target / steps;
+    let current = 0;
+    // colour the suffix teal
+    const parent = el.parentElement;
+    let suffixSpan = parent.querySelector('.counter-suffix');
+    if (!suffixSpan && suffix) {
+      suffixSpan = document.createElement('span');
+      suffixSpan.className = 'counter-suffix text-teal-500';
+      suffixSpan.textContent = suffix;
+      parent.appendChild(suffixSpan);
+    }
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(current);
+    }, stepTime);
+  }
+
+  // trigger bars
+  function triggerBars(section) {
+    section.querySelectorAll('.stat-bar').forEach(bar => {
+      bar.style.width = '100%';
+    });
+  }
+
+  // Intersection Observer for the stats section
+  const statsSection = document.getElementById('career-stats');
+  let countersFired = false;
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !countersFired) {
+        countersFired = true;
+        triggerBars(statsSection);
+        statsSection.querySelectorAll('.live-counter').forEach((el, i) => {
+          setTimeout(() => animateCounter(el), i * 180);
+        });
+        // card pop-in
+        statsSection.querySelectorAll('div[class*="rounded-2xl"]').forEach((card, i) => {
+          card.style.transform = 'scale(0.92)';
+          card.style.opacity = '0';
+          card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease, box-shadow 0.3s';
+          setTimeout(() => {
+            card.style.transform = 'scale(1)';
+            card.style.opacity = '1';
+          }, i * 120);
+        });
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  if (statsSection) counterObserver.observe(statsSection);
+
+  // ── Scroll Progress Bar ──
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('scroll-progress');
+    if (bar) {
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      bar.style.width = scrolled + '%';
+    }
+  });
+
+
+
+  // ── Scroll Reveal ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .section-tag-line').forEach(el => {
+    revealObserver.observe(el);
+  });
+</script>
+</body>
+</html>
